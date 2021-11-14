@@ -79,35 +79,68 @@ console.log('Hallo daar!');
 // }
 
 /* Stap 10 - map methode */
-async function countrySearch(everyCountry) {
-    const listOfCountries = document.getElementById('list-of-countries');
-    try {
-        const allCountries = await axios.get('https://restcountries.com/v2/all');
+// Poging 1 - deze werkt niet
+// async function countrySearch(everyCountry) {
+//     const listOfCountries = document.getElementById('list-of-countries');
+//     try {
+//         const allCountries = await axios.get('https://restcountries.com/v2/all');
+//
+//         //console.log(allCountries.data[10].region);
+//         const createListOfCountries = everyCountry.map((countryObject) => {
+//             const oneCountry = countryObject.name;
+//             const stringPopulation = `Has a population of ${countryObject.population} people`;
+//             const urlFlag = countryObject.flag;
+//
+//             return `
+//             <li>
+//                 <img src="${urlFlag}" class="mini-flag">
+//                 <h3 class="${countryObject.region}">${oneCountry}</h3>
+//                 <p>${stringPopulation}</p>
+//             </li>
+//             `;
+//         });
+//         listOfCountries.innerHTML = `${createListOfCountries.join('')}`;
+//          // console.log(allCountries.data);
+//     } catch(e) {
+//         console.error(e);
+//     }
+// }
+//
+// countrySearch(allCountries);
 
-        //console.log(allCountries.data[10].region);
-        const createListOfCountries = everyCountry.map((countryObject) => {
-            const oneCountry = countryObject.name;
-            const stringPopulation = `Has a population of ${countryObject.population} people`;
-            const urlFlag = countryObject.flag;
-
-            return `
-            <li>
-                <img src="${urlFlag}" class="mini-flag">
-                <h3 class="${countryObject.region}">${oneCountry}</h3>
-                <p>${stringPopulation}</p>
-            </li>
-            `;
-        });
-        listOfCountries.innerHTML = `${createListOfCountries.join('')}`;
-         // console.log(allCountries.data);
-    } catch(e) {
-        console.error(e);
-    }
-}
-
-countrySearch(allCountries);
+//Poging 2 - deze werkt
+// async function countrySearch() {
+//     const listOfCountries = document.getElementById('list-of-countries');
+//     try {
+//         const result = await axios.get('https://restcountries.com/v2/all');
+//         const allCountries = result.data;
+//         console.log(allCountries);
+//
+//         //console.log(allCountries.data[10].region);
+//         const createListOfCountries = allCountries.map((countryObject) => {
+//             const oneCountry = countryObject.name;
+//             const stringPopulation = `Has a population of ${countryObject.population} people`;
+//             const urlFlag = countryObject.flag;
+//
+//             return `
+//             <li>
+//                 <img src="${urlFlag}" class="mini-flag">
+//                 <h3 class="${countryObject.region}">${oneCountry}</h3>
+//                 <p>${stringPopulation}</p>
+//             </li>
+//             `;
+//         });
+//         listOfCountries.innerHTML = `${createListOfCountries.join('')}`;
+//         // console.log(allCountries.data);
+//     } catch(e) {
+//         console.error(e);
+//     }
+// }
+//
+// countrySearch();
 
 /* Stap 11 - data sorteren */
+// Poging 1
 // async function sortByPopulation() {
 //     // const listOfCountries = document.getElementById('list-of-countries');
 //     try {
@@ -132,3 +165,94 @@ countrySearch(allCountries);
 // }
 //
 // sortByPopulation();
+
+// Poging 2 - deze werkt
+// async function sortByPopulation() {
+//     try {
+//         const allCountries = await axios.get('https://restcountries.com/v2/all');
+//         const countryPopulation = allCountries.data;
+//         //const populationCountryOne = allCountries.data[0].population;
+//         countryPopulation.sort((a, b) => {
+//             if (a.population > b.population) {
+//                 return 1;
+//             }
+//             if (a.population < b.population) {
+//                 return -1;
+//             }
+//             return 0;
+//         })
+//         console.log(allCountries);
+//         //console.log(allCountries.data[10].region);
+//
+//     } catch(e) {
+//         console.error(e);
+//     }
+// }
+//
+// sortByPopulation();
+
+
+/* Stap 11 - deel 2 */
+
+async function sortByPopulation() {
+    const listOfCountries = document.getElementById('list-of-countries');
+    try {
+        const allCountries = await axios.get('https://restcountries.com/v2/all');
+        const countryPopulation = allCountries.data;
+
+        const sortedCountriesByPopulation = countryPopulation.sort((a, b) => {
+            if (a.population > b.population) {
+                return 1;
+            }
+            if (a.population < b.population) {
+                return -1;
+            }
+            return 0;
+        })
+
+        const createListOfCountries = sortedCountriesByPopulation.map((countryObject) => {
+            const oneCountry = countryObject.name;
+            const stringPopulation = `Has a population of ${countryObject.population} people`;
+            const urlFlag = countryObject.flag;
+
+            return `
+        <li>
+            <img src="${urlFlag}" class="mini-flag">
+            <h3 class="${countryObject.region}">${oneCountry}</h3>
+            <p>${stringPopulation}</p>
+        </li>
+        `;
+        });
+        listOfCountries.innerHTML = `${createListOfCountries.join('')}`;
+        // console.log(allCountries);
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+sortByPopulation();
+
+// Geprobeerd van asynchrone functie een normale functie te maken
+// function countrySearch() {
+//     const listOfCountries = document.getElementById('list-of-countries');
+//     const allCountries = result.data;
+//     console.log(allCountries);
+//
+//     const createListOfCountries = allCountries.map((countryObject) => {
+//         const oneCountry = countryObject.name;
+//         const stringPopulation = `Has a population of ${countryObject.population} people`;
+//         const urlFlag = countryObject.flag;
+//
+//         return `
+//         <li>
+//             <img src="${urlFlag}" class="mini-flag">
+//             <h3 class="${countryObject.region}">${oneCountry}</h3>
+//             <p>${stringPopulation}</p>
+//         </li>
+//         `;
+//     });
+//     listOfCountries.innerHTML = `${createListOfCountries.join('')}`;
+//     // console.log(allCountries.data);
+// }
+//
+// countrySearch();
