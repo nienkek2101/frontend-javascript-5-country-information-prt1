@@ -232,7 +232,7 @@ async function sortByPopulation() {
 
 sortByPopulation();
 
-// Geprobeerd van asynchrone functie een normale functie te maken
+// Geprobeerd van asynchrone functie een normale functie te maken, maar uiteindelijk anders opgelost
 // function countrySearch() {
 //     const listOfCountries = document.getElementById('list-of-countries');
 //     const allCountries = result.data;
