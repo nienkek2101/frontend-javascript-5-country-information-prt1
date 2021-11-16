@@ -1,9 +1,9 @@
-console.log("Werkt het?")
+// console.log("Werkt het?")
 
 import axios from 'axios';
 
 // https://restcountries.com/v2/name/peru
-
+/* Stappen uit werkcollege */
 async function getInformationOneCountry() {
     const countryBlock = document.getElementById('country-information');
     try {
@@ -49,3 +49,32 @@ getInformationOneCountry();
 // 1. 'anker'-element in het HTML-bestand plaatsen (met ID!)
 // 2. Sla de referentie naar dit element op in het JS-bestand
 // 3. Gebruik .innerHTML om een stukje data op de pagina te laten zien
+
+
+/* invoerveld + zoeken specifiek land */
+// 1. Schrijf een functie die het land zoekt
+// 2. Maak een invoerveld
+// 3. Maak een zoek button
+// 4. Wanneer er op de button wordt geklikt, moet een array functie (denk find) uitgevoerd worden,
+// die zoekt naar het woord(land) dat in het invoerveld getypt is.
+// 5. Dan moet de informatie van het gevonden land weergegeven worden op de pagina, zoals in
+// eerste gedeelte van de opdracht
+
+function searchCountry() {
+    const searchForm = document.getElementById('search-country-form');
+    // searchButton.addEventListener('click');
+    return searchForm.innerHTML = `
+    <form>
+        <input type="text" />
+        <button type="submit">
+            Zoek
+        </button>
+    </form>
+    `
+}
+
+searchCountry();
+
+const findInfoSingleCountry = moetnog.find((infoCountries) => {
+
+})

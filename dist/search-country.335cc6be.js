@@ -460,11 +460,11 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"9bdD9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+// console.log("Werkt het?")
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-console.log("Werkt het?");
 // https://restcountries.com/v2/name/peru
-async function getInformationOneCountry() {
+/* Stappen uit werkcollege */ async function getInformationOneCountry() {
     const countryBlock = document.getElementById('country-information');
     try {
         const specificCountry = await _axiosDefault.default.get('https://restcountries.com/v2/name/nederland');
@@ -488,19 +488,42 @@ async function getInformationOneCountry() {
         console.error(e);
     }
 }
-getInformationOneCountry(); // DATA OPHALEN STAPPENPLAN
- // 1. installeer en importeer axios
- // ---- zoek in de API documentatie het juiste endpoint
- // 2. asynchrone functie schrijven
- // 3. try - chatch block
- // 4. In het try block gaan we ons GET-request maken met axios
- // 5. Resultaat loggen
- // 6. Probeer een console.log() met de naam van het land maken
- // 7. Probeer een console.log() met de populatie van het land maken
- // DINGEN OP DE PAGINA WEERGEVEN
- // 1. 'anker'-element in het HTML-bestand plaatsen (met ID!)
- // 2. Sla de referentie naar dit element op in het JS-bestand
- // 3. Gebruik .innerHTML om een stukje data op de pagina te laten zien
+getInformationOneCountry();
+// DATA OPHALEN STAPPENPLAN
+// 1. installeer en importeer axios
+// ---- zoek in de API documentatie het juiste endpoint
+// 2. asynchrone functie schrijven
+// 3. try - chatch block
+// 4. In het try block gaan we ons GET-request maken met axios
+// 5. Resultaat loggen
+// 6. Probeer een console.log() met de naam van het land maken
+// 7. Probeer een console.log() met de populatie van het land maken
+// DINGEN OP DE PAGINA WEERGEVEN
+// 1. 'anker'-element in het HTML-bestand plaatsen (met ID!)
+// 2. Sla de referentie naar dit element op in het JS-bestand
+// 3. Gebruik .innerHTML om een stukje data op de pagina te laten zien
+/* invoerveld + zoeken specifiek land */ // 1. Schrijf een functie die het land zoekt
+// 2. Maak een invoerveld
+// 3. Maak een zoek button
+// 4. Wanneer er op de button wordt geklikt, moet een array functie (denk find) uitgevoerd worden,
+// die zoekt naar het woord(land) dat in het invoerveld getypt is.
+// 5. Dan moet de informatie van het gevonden land weergegeven worden op de pagina, zoals in
+// eerste gedeelte van de opdracht
+function searchCountry() {
+    const searchForm = document.getElementById('search-country-form');
+    // searchButton.addEventListener('click');
+    return searchForm.innerHTML = `
+    <form>
+        <input type="text" />
+        <button type="submit">
+            Zoek
+        </button>
+    </form>
+    `;
+}
+searchCountry();
+const findInfoSingleCountry = moetnog.find((infoCountries)=>{
+});
 
 },{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {
 module.exports = require('./lib/axios');
