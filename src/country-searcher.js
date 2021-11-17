@@ -79,6 +79,6 @@ function searchCountry() {
 searchCountry();
 
 // ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
-const findInfoSingleCountry = watzetikhierneer.find((infoCountries) => {
-    return infoCountries.data;
-})
+// const findInfoSingleCountry = watzetikhierneer.find((infoCountries) => {
+//     return const foundCountry = (infoCountries.data[i].name === {countrynameuitinvoerveld});
+// })

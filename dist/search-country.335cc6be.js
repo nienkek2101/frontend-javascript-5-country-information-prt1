@@ -523,11 +523,10 @@ function searchCountry() {
     </form>
     `;
 }
-searchCountry();
-// ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
-const findInfoSingleCountry = watzetikhierneer.find((infoCountries)=>{
-    return infoCountries.data;
-});
+searchCountry(); // ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
+ // const findInfoSingleCountry = watzetikhierneer.find((infoCountries) => {
+ //     return const foundCountry = (infoCountries.data[i].name === {countrynameuitinvoerveld});
+ // })
 
 },{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {
 module.exports = require('./lib/axios');
