@@ -502,6 +502,7 @@ getInformationOneCountry();
 // 1. 'anker'-element in het HTML-bestand plaatsen (met ID!)
 // 2. Sla de referentie naar dit element op in het JS-bestand
 // 3. Gebruik .innerHTML om een stukje data op de pagina te laten zien
+// ---------------------------------
 /* invoerveld + zoeken specifiek land */ // 1. Schrijf een functie die het land zoekt
 // 2. Maak een invoerveld
 // 3. Maak een zoek button
@@ -509,6 +510,7 @@ getInformationOneCountry();
 // die zoekt naar het woord(land) dat in het invoerveld getypt is.
 // 5. Dan moet de informatie van het gevonden land weergegeven worden op de pagina, zoals in
 // eerste gedeelte van de opdracht
+// FUNCTIE ZOEKBALK
 function searchCountry() {
     const searchForm = document.getElementById('search-country-form');
     // searchButton.addEventListener('click');
@@ -522,7 +524,9 @@ function searchCountry() {
     `;
 }
 searchCountry();
-const findInfoSingleCountry = moetnog.find((infoCountries)=>{
+// ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
+const findInfoSingleCountry = watzetikhierneer.find((infoCountries)=>{
+    return infoCountries.data;
 });
 
 },{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {

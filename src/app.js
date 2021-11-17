@@ -192,7 +192,7 @@ console.log('Hallo daar!');
 // sortByPopulation();
 
 
-/* Stap 11 - deel 2 */
+/* Stap 11 - deel 2 - DIT WERKT, ALLEEN DEZE MOET AAN */
 
 async function sortByPopulation() {
     const listOfCountries = document.getElementById('list-of-countries');

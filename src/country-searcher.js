@@ -3,6 +3,7 @@
 import axios from 'axios';
 
 // https://restcountries.com/v2/name/peru
+
 /* Stappen uit werkcollege */
 async function getInformationOneCountry() {
     const countryBlock = document.getElementById('country-information');
@@ -50,6 +51,7 @@ getInformationOneCountry();
 // 2. Sla de referentie naar dit element op in het JS-bestand
 // 3. Gebruik .innerHTML om een stukje data op de pagina te laten zien
 
+// ---------------------------------
 
 /* invoerveld + zoeken specifiek land */
 // 1. Schrijf een functie die het land zoekt
@@ -60,6 +62,7 @@ getInformationOneCountry();
 // 5. Dan moet de informatie van het gevonden land weergegeven worden op de pagina, zoals in
 // eerste gedeelte van de opdracht
 
+// FUNCTIE ZOEKBALK
 function searchCountry() {
     const searchForm = document.getElementById('search-country-form');
     // searchButton.addEventListener('click');
@@ -75,6 +78,7 @@ function searchCountry() {
 
 searchCountry();
 
-const findInfoSingleCountry = moetnog.find((infoCountries) => {
-
+// ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
+const findInfoSingleCountry = watzetikhierneer.find((infoCountries) => {
+    return infoCountries.data;
 })

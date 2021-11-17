@@ -639,7 +639,7 @@ console.log('Hallo daar!');
 // }
 //
 // sortByPopulation();
-/* Stap 11 - deel 2 */ async function sortByPopulation() {
+/* Stap 11 - deel 2 - DIT WERKT, ALLEEN DEZE MOET AAN */ async function sortByPopulation() {
     const listOfCountries = document.getElementById('list-of-countries');
     try {
         const allCountries = await _axiosDefault.default.get('https://restcountries.com/v2/all');
