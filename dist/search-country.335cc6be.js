@@ -463,32 +463,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 // console.log("Werkt het?")
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-// https://restcountries.com/v2/name/peru
-/* Stappen uit werkcollege */ async function getInformationOneCountry() {
-    const countryBlock = document.getElementById('country-information');
-    try {
-        const specificCountry = await _axiosDefault.default.get('https://restcountries.com/v2/name/nederland');
-        console.log(specificCountry);
-        // console.log(specificCountry.data[0].name);
-        // console.log(specificCountry.data[0].population);
-        const dataSpecificCountry = specificCountry.data[0];
-        const urlFlag = dataSpecificCountry.flag;
-        const countryName = dataSpecificCountry.name;
-        const regionName = dataSpecificCountry.region;
-        const countryPopulation = dataSpecificCountry.population;
-        const countryCapital = dataSpecificCountry.capital;
-        const countryCurrency = dataSpecificCountry.currencies[0].name;
-        return countryBlock.innerHTML = `
-        <img src="${urlFlag}" class="flag">
-        <h3>${countryName}</h3>
-        <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.
-        The capital is ${countryCapital} and you can pay with ${countryCurrency}'s.</p>
-        `;
-    } catch (e) {
-        console.error(e);
-    }
-}
-getInformationOneCountry();
 // DATA OPHALEN STAPPENPLAN
 // 1. installeer en importeer axios
 // ---- zoek in de API documentatie het juiste endpoint
@@ -502,6 +476,36 @@ getInformationOneCountry();
 // 1. 'anker'-element in het HTML-bestand plaatsen (met ID!)
 // 2. Sla de referentie naar dit element op in het JS-bestand
 // 3. Gebruik .innerHTML om een stukje data op de pagina te laten zien
+// https://restcountries.com/v2/name/peru
+/* Stappen uit werkcollege - deel 1*/ // async function getInformationOneCountry() {
+//     const countryBlock = document.getElementById('country-information');
+//     try {
+//         const specificCountry = await axios.get('https://restcountries.com/v2/name/nederland');
+//         console.log(specificCountry);
+//         // console.log(specificCountry.data[0].name);
+//         // console.log(specificCountry.data[0].population);
+//         const dataSpecificCountry = specificCountry.data[0];
+//
+//         const urlFlag = dataSpecificCountry.flag;
+//         const countryName = dataSpecificCountry.name;
+//         const regionName = dataSpecificCountry.region;
+//         const countryPopulation = dataSpecificCountry.population;
+//         const countryCapital = dataSpecificCountry.capital;
+//         const countryCurrency = dataSpecificCountry.currencies[0].name;
+//
+//         return countryBlock.innerHTML = `
+//         <img src="${urlFlag}" class="flag">
+//         <h3>${countryName}</h3>
+//         <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.
+//         The capital is ${countryCapital} and you can pay with ${countryCurrency}'s.</p>
+//         `;
+//
+//     } catch(e) {
+//         console.error(e);
+//     }
+// }
+//
+// getInformationOneCountry();
 // ---------------------------------
 /* invoerveld + zoeken specifiek land */ // 1. Schrijf een functie die het land zoekt
 // 2. Maak een invoerveld
@@ -510,20 +514,79 @@ getInformationOneCountry();
 // die zoekt naar het woord(land) dat in het invoerveld getypt is.
 // 5. Dan moet de informatie van het gevonden land weergegeven worden op de pagina, zoals in
 // eerste gedeelte van de opdracht
-// FUNCTIE ZOEKBALK
-function searchCountry() {
-    const searchForm = document.getElementById('search-country-form');
-    // searchButton.addEventListener('click');
-    return searchForm.innerHTML = `
-    <form>
-        <input type="text" />
-        <button type="submit">
-            Zoek
-        </button>
-    </form>
-    `;
+/* Deel 2 - zoekfunctie integreren*/ // FUNCTIE ZOEKBALK - poging 1 - lukt nog niet
+// function searchCountry() {
+//     const searchForm = document.getElementById('search-country-form');
+//     // searchButton.addEventListener('click');
+//     return searchForm.innerHTML = `
+//     <form>
+//         <input type="text" />
+//         <button type="submit">
+//             Zoek
+//         </button>
+//     </form>
+//     `
+// }
+//
+// searchCountry();
+// FUNCTIE ZOEKBALK - poging 2 - lukt nog niet
+// async function searchCountry() {
+//     const searchForm = document.getElementById('search-country-form');
+//     const form = document.getElementById('form');
+//     const country = document.getElementById('input-field');
+//     try {
+//
+//         form.addEventListener('submit');
+//         const specificCountry = await axios.get('https://restcountries.com/v2/name/${country}');
+//         console.log(specificCountry);
+//
+//         // searchButton.addEventListener('click');
+//         return searchForm.innerHTML = `
+//         <form id="form">
+//             <input type="text" id="input-field" placeholder="Type hier de naam van het land" />
+//             <button type="submit">
+//                 Zoek
+//             </button>
+//         </form>
+//         `
+//
+//     } catch(e) {
+//         console.error(e);
+//     }
+// }
+//
+// searchCountry();
+/* Hieronder ben ik bezig */ const searchForm = document.getElementById('search-country-form');
+searchForm.addEventListener('submit', getInformationOneCountry);
+async function getInformationOneCountry() {
+    const countryBlock = document.getElementById('country-information');
+    try {
+        const country = document.getElementById('input-field');
+        const specificCountry = await _axiosDefault.default.get('https://restcountries.com/v2/name/${country}');
+        console.log(specificCountry);
+        console.log(country);
+    // // console.log(specificCountry.data[0].name);
+    // // console.log(specificCountry.data[0].population);
+    // const dataSpecificCountry = specificCountry.data[0];
+    //
+    // const urlFlag = dataSpecificCountry.flag;
+    // const countryName = dataSpecificCountry.name;
+    // const regionName = dataSpecificCountry.region;
+    // const countryPopulation = dataSpecificCountry.population;
+    // const countryCapital = dataSpecificCountry.capital;
+    // const countryCurrency = dataSpecificCountry.currencies[0].name;
+    //
+    // return countryBlock.innerHTML = `
+    // <img src="${urlFlag}" class="flag">
+    // <h3>${countryName}</h3>
+    // <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.
+    // The capital is ${countryCapital} and you can pay with ${countryCurrency}'s.</p>
+    // `;
+    } catch (e) {
+        console.error(e);
+    }
 }
-searchCountry(); // ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
+getInformationOneCountry(); // ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
  // const findInfoSingleCountry = watzetikhierneer.find((infoCountries) => {
  //     return const foundCountry = (infoCountries.data[i].name === {countrynameuitinvoerveld});
  // })
