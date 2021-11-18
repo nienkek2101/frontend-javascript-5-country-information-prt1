@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;500&display=swap');
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Zen Kaku Gothic New', Arial, sans-serif;
+
 }
 
 #list-of-countries {
     list-style-type: none;
-    background-color: #dedede;
+    background-color: #efefef;
     column-count: 3;
     padding: 25px;
 }
@@ -34,23 +38,74 @@ li {
 }
 
 .Africa {
-    color: blue;
+    color: #5268b9;
 }
 
 .Americas {
-    color: green;
+    color: #639058;
 }
 
 .Asia {
-    color: red;
+    color: #bd4e53;
 }
 
 .Europe {
-    color: yellow;
+    color: #f7d130;
 }
 
 .Oceania {
-    color: purple;
+    color: #944db2;
 }
 
 /* extra voor prt 2 opdracht */
+
+#search-country-form {
+    /*display: flex;*/
+    /*justify-content: center;*/
+
+}
+.search-countries {
+    /*justify-content: center;*/
+}
+
+#input-field {
+    padding: 10px;
+    border: 2px inset;
+    /*border-style: inset;*/
+    border-radius: 8px 0 0 8px;
+
+}
+
+input:focus {
+    outline: none;
+    background-color: #f2f6ea;
+}
+
+#search-button {
+    background-color: yellowgreen;
+    border: none;
+    padding: 11px;
+    border-radius: 0 8px 8px 0;
+    text-transform: uppercase;
+}
+
+#country-information {
+    background-color: #efefef;
+    margin: 30px;
+    max-width: 600px;
+    border-radius: 5px;
+    padding: 20px;
+    filter: drop-shadow(6px 6px 8px #858586);
+}
+
+h3 {
+    padding-bottom: 15px;
+}
+
+.flag {
+    height: 25px;
+}
+#error-message {
+    color: red;
+    padding: 10px;
+}

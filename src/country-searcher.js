@@ -111,32 +111,45 @@ import axios from 'axios';
 /* Functie zoekbalk - DEZE WERKT */
 const searchForm = document.getElementById('search-country-form');
 searchForm.addEventListener('submit', getInformationOneCountry);
-searchForm.reset();
+// searchForm.reset();
+
 
 async function getInformationOneCountry(event) {
     event.preventDefault();
+    // searchForm.reset();
     const countryBlock = document.getElementById('country-information');
+    // let errorMessage.innerHTML = "";
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.innerHTML = "";
+
     try {
         const country = document.getElementById('input-field').value;
         const specificCountry = await axios.get(`https://restcountries.com/v2/name/${country}`);
-        console.log(specificCountry);
+        // console.log(specificCountry);
 
         const dataSpecificCountry = specificCountry.data[0];
 
         const urlFlag = dataSpecificCountry.flag;
         const countryName = dataSpecificCountry.name;
-        const regionName = dataSpecificCountry.region;
+        const regionName = dataSpecificCountry.subregion;
         const countryPopulation = dataSpecificCountry.population;
         const countryCapital = dataSpecificCountry.capital;
         const countryCurrency = dataSpecificCountry.currencies[0].name;
+        const countryLanguage = dataSpecificCountry.languages[0].name;
 
         return countryBlock.innerHTML = `
         <img src="${urlFlag}" class="flag">
         <h3>${countryName}</h3>
-        <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.
-        The capital is ${countryCapital} and you can pay with ${countryCurrency}'s.</p>
+        <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.</p>
+        <p>The capital is ${countryCapital} and you can pay with ${countryCurrency}'s. </p>
+        <p>They speak ${countryLanguage}.</p>
         `;
+        // errorMessage.clear;
     } catch(e) {
+        console.log("dit is een ongeldige naam");
+        return errorMessage.innerHTML = `
+        <p>Dit is een ongeldige naam</p>
+        `
         console.error(e);
     }
 }
