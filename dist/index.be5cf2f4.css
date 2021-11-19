@@ -89,7 +89,7 @@ input:focus {
     text-transform: uppercase;
 }
 
-#country-information {
+.country-information-block {
     background-color: #efefef;
     margin: 30px;
     max-width: 600px;

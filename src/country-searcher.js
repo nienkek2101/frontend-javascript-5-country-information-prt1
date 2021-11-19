@@ -110,20 +110,27 @@ import axios from 'axios';
 
 /* Functie zoekbalk - DEZE WERKT */
 const searchForm = document.getElementById('search-country-form');
-searchForm.addEventListener('submit', getInformationOneCountry);
-// searchForm.reset();
+searchForm.addEventListener('submit', getCountry);
+// searchForm.reset(); -- werkt niet, kan ook op andere manier
 
+function getCountry(e){
+    e.preventDefault();
 
-async function getInformationOneCountry(event) {
-    event.preventDefault();
-    // searchForm.reset();
+    const queryCountry = document.getElementById('input-field');
+
+    getInformationOneCountry(queryCountry.value);
+    // maakt het invoerveld leeg na het op submit klikken
+    queryCountry.value = '';
+}
+
+async function getInformationOneCountry(country) {
+    // e.preventDefault();
     const countryBlock = document.getElementById('country-information');
-    // let errorMessage.innerHTML = "";
     const errorMessage = document.getElementById('error-message');
-    errorMessage.innerHTML = "";
+    errorMessage.innerHTML = '';
 
     try {
-        const country = document.getElementById('input-field').value;
+        // const country = document.getElementById('input-field').value;
         const specificCountry = await axios.get(`https://restcountries.com/v2/name/${country}`);
         // console.log(specificCountry);
 
@@ -138,18 +145,21 @@ async function getInformationOneCountry(event) {
         const countryLanguage = dataSpecificCountry.languages[0].name;
 
         return countryBlock.innerHTML = `
-        <img src="${urlFlag}" class="flag">
-        <h3>${countryName}</h3>
-        <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.</p>
-        <p>The capital is ${countryCapital} and you can pay with ${countryCurrency}'s. </p>
-        <p>They speak ${countryLanguage}.</p>
+        <article class="country-information-block">
+            <img src="${urlFlag}" class="flag">
+            <h3>${countryName}</h3>
+            <p>${countryName} is situated in ${regionName}. It has a population of ${countryPopulation}.</p>
+            <p>The capital is ${countryCapital} and you can pay with ${countryCurrency}'s. </p>
+            <p>They speak ${countryLanguage}.</p>
+        </article>
         `;
         // errorMessage.clear;
     } catch(e) {
-        console.log("dit is een ongeldige naam");
+        // console.log("dit is een ongeldige naam");
         return errorMessage.innerHTML = `
         <p>Dit is een ongeldige naam</p>
         `
+        // return countryBlock.innerHTML = '';
         console.error(e);
     }
 }
