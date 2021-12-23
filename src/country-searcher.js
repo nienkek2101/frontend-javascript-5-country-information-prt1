@@ -164,7 +164,7 @@ async function getInformationOneCountry(country) {
     }
 }
 
-// getInformationOneCountry();
+getInformationOneCountry();
 
 
 // ARRAY METHODE DIE UITGEVOERD MOET WORDEN ASL ER OP ZOEK WORDT GEKLIKT
